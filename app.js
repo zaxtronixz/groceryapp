@@ -1,3 +1,20 @@
+/*
+PROCEDURE CHECK
+
+6. created view file
+7. moved client page to views
+8. added app.get in the app.js file
+9. initialize git in the project file
+10. added files to git
+11. committed the changes to git
+12. created git repository for the project on github.com
+13. added the remote repository to the local get
+--- git add remote origin git@github.com:zaxtronixz/grocerylist.git
+--- 
+
+*/
+
+
 ///// 1. Load Modules
 	
 	var express =  require("express"); // load express
@@ -6,7 +23,7 @@
 
 	var path  = require("path"); // load path to directories
 
-	var dbsetup = require("./dbsetup.js") // load db connection setup
+	var dbsetup = require("./config/dbsetup.js") // load db connection setup
 
 
 ///// 2. configure app
@@ -41,7 +58,7 @@
 	
 	// default router
 	app.get("/", function(req, res){
-		res.sendFile(__dirname + "/views/index.html")
+		res.send(__dirname + "views/index.html")
 	})
 
 ///// 4. launch app
