@@ -14,7 +14,7 @@
 ////////////////////////////////////
 
 	// given variables
-	var connect = createConnection({
+	var conn = mysql.createConnection({
 
 		host: "bmu9xvn7rdk4oq98mlkx-mysql.services.clever-cloud.com",
 		user: "ujxezoszgxsbcpfd",
@@ -28,5 +28,5 @@
 /////////////////////////////////////
 
 
-module.exports = connect;
+module.exports = conn;
 

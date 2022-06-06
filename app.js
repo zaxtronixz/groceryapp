@@ -10,12 +10,15 @@ PROCEDURE CHECK
 12. created git repository for the project on github.com
 13. added the remote repository to the local get
 --- git add remote origin git@github.com:zaxtronixz/grocerylist.git
---- 
+--- git push -u -f origin master // push local content to remote, set remote as defualt, force write local to remote
+14. configure database connection in dbsetup.js file
+15. load the file in your app.js // through require(./path/to/where/file/is/located.js)
+16. 
 
 */
 
 
-///// 1. Load Modules
+///// 1. LOAD MODULES
 	
 	var express =  require("express"); // load express
 
@@ -23,7 +26,7 @@ PROCEDURE CHECK
 
 	var path  = require("path"); // load path to directories
 
-	var dbsetup = require("./config/dbsetup.js") // load db connection setup
+	var conn = require("./config/dbsetup.js") // load db connection setup
 
 
 ///// 2. configure app
@@ -36,19 +39,15 @@ PROCEDURE CHECK
 
 	app.use(express.static(path.join(__dirname, "public")))
 
-	var connection = dbsetup;
 
-	 // establish temporary connecton with cloud db (clever-cloud.com) to fetch data and
+	 // Establish connecton with cloud db (clever-cloud.com) to fetch data and
 	 // release connection or display error
-	connection.getConnection(function(err, tempConnect){
+	conn.connect(function(err, result){
 		if(err){ 
 			console.log("Can not connect to DB: ", err);
 		}
 		else{
 			console.log("connection to db is successful");
-		}
-		if(tempConnect){
-			tempConnect.release();
 		}
 	})
 
